@@ -23,7 +23,7 @@ function App() {
       }
     );
   } else {
-    console.log("Geolocation is not supported");
+    setLocation('Geolocation is not supported')
   }
 
   useEffect(() => {
