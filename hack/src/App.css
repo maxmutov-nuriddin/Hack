@@ -40,3 +40,9 @@
 .read-the-docs {
   color: #888;
 }
+
+.text{
+  font-weight: bolder;
+  color: red;
+  font-size: 64px;
+}

